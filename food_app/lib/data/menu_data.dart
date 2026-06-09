@@ -1,24 +1,58 @@
 import '../models/menu_item.dart';
 
-final menuItems = [
+final specialsItems = <MenuItem>[
   MenuItem(
     name: "Hake & Chips",
     image: "assets/hake.jpg",
     description: "Fresh hake with chips",
     price: 89.90,
   ),
-
+];
+final fishItems = <MenuItem>[
   MenuItem(
-    name: "Seafood Platter",
-    image: "assets/platter.jpg",
-    description: "Fish, calamari and prawns",
-    price: 179.90,
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
   ),
-
+];
+final calamariItems = <MenuItem>[
   MenuItem(
-    name: "Fish Burger",
-    image: "assets/burger.jpg",
-    description: "Crispy fish fillet burger",
-    price: 69.90,
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+];
+final sideItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+];
+final burgerItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+];
+final drinkItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+];
+final sauceItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
   ),
 ];

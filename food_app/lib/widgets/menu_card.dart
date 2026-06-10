@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../models/menu_item.dart';
+import '../controllers/cart_controller.dart';
 
 class MenuCard extends StatelessWidget {
   final MenuItem item;
+  final CartController cartController;
 
-  const MenuCard({super.key, required this.item});
+  const MenuCard({super.key, required this.item, required this.cartController});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,13 @@ class MenuCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                FilledButton(onPressed: () {}, child: const Text("Add")),
+                FilledButton.icon(
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add'),
+                  onPressed: () {
+                    cartController.addItem(item);
+                  },
+                ),
               ],
             ),
           ),

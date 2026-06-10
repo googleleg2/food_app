@@ -7,8 +7,44 @@ final specialsItems = <MenuItem>[
     description: "Fresh hake with chips",
     price: 89.90,
   ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
 ];
 final fishItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
   MenuItem(
     name: "Hake & Chips",
     image: "assets/hake.jpg",
@@ -23,8 +59,44 @@ final calamariItems = <MenuItem>[
     description: "Fresh hake with chips",
     price: 89.90,
   ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
 ];
 final sideItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
   MenuItem(
     name: "Hake & Chips",
     image: "assets/hake.jpg",
@@ -39,6 +111,24 @@ final burgerItems = <MenuItem>[
     description: "Fresh hake with chips",
     price: 89.90,
   ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
 ];
 final drinkItems = <MenuItem>[
   MenuItem(
@@ -47,8 +137,68 @@ final drinkItems = <MenuItem>[
     description: "Fresh hake with chips",
     price: 89.90,
   ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
 ];
 final sauceItems = <MenuItem>[
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
+  MenuItem(
+    name: "Hake & Chips",
+    image: "assets/hake.jpg",
+    description: "Fresh hake with chips",
+    price: 89.90,
+  ),
   MenuItem(
     name: "Hake & Chips",
     image: "assets/hake.jpg",

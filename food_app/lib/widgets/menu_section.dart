@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../models/menu_item.dart';
 import 'menu_card.dart';
+import '../controllers/cart_controller.dart';
 
 class MenuSection extends StatelessWidget {
   final String title;
   final GlobalKey sectionKey;
   final List<MenuItem> items;
+  final CartController cartController;
 
   const MenuSection({
     super.key,
     required this.title,
     required this.sectionKey,
     required this.items,
+    required this.cartController,
   });
 
   @override
@@ -41,7 +44,10 @@ class MenuSection extends StatelessWidget {
               childAspectRatio: 0.85,
             ),
             itemBuilder: (context, index) {
-              return MenuCard(item: items[index]);
+              return MenuCard(
+                item: items[index],
+                cartController: cartController,
+              );
             },
           ),
         ],

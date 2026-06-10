@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/controllers/cart_controller.dart';
 import 'package:food_app/data/menu_data.dart';
 
 import '../controllers/restaurant_controller.dart';
@@ -18,6 +19,7 @@ class RestaurantScreen extends StatefulWidget {
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
   final RestaurantController controller = RestaurantController();
+  final CartController cartController = CartController();
 
   @override
   void initState() {
@@ -31,6 +33,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
     controller.scrollController.removeListener(controller.handleScroll);
 
     controller.disposeController();
+
+    cartController.dispose();
 
     super.dispose();
   }
@@ -51,7 +55,9 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
               controller: controller.scrollController,
 
               slivers: [
-                const SliverToBoxAdapter(child: AppHeader()),
+                SliverToBoxAdapter(
+                  child: AppHeader(cartController: cartController),
+                ),
 
                 const SliverToBoxAdapter(child: PromoBanner()),
 
@@ -69,42 +75,49 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                         title: 'Specials',
                         sectionKey: controller.specialsKey,
                         items: specialsItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Fish',
                         sectionKey: controller.fishKey,
                         items: fishItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Calamari',
                         sectionKey: controller.calamariKey,
                         items: calamariItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Chips & Sides',
                         sectionKey: controller.chipsKey,
                         items: sideItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Burgers',
                         sectionKey: controller.burgersKey,
                         items: burgerItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Drinks',
                         sectionKey: controller.drinksKey,
                         items: drinkItems,
+                        cartController: cartController,
                       ),
 
                       MenuSection(
                         title: 'Sauces',
                         sectionKey: controller.saucesKey,
                         items: sauceItems,
+                        cartController: cartController,
                       ),
                     ],
                   ),
@@ -113,7 +126,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
             ),
           ),
 
-          if (desktop) const SizedBox(width: 380, child: CartPanel()),
+          if (desktop)
+            SizedBox(
+              width: 380,
+              child: CartPanel(cartController: cartController),
+            ),
         ],
       ),
     );

@@ -1,16 +1,1 @@
-{
-  "hosting": {
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
-}
+{"hosting":{"public":"build/web","ignore":["firebase.json","**/.*","**/node_modules/**"],"rewrites":[{"source":"**","destination":"/index.html"}]},"flutter":{"platforms":{"android":{"default":{"projectId":"weed-lovers-chess-kitchen","appId":"1:296423355061:android:387acf88e16763492684fc","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"weed-lovers-chess-kitchen","configurations":{"android":"1:296423355061:android:387acf88e16763492684fc","ios":"1:296423355061:ios:c0d08596117206942684fc","macos":"1:296423355061:ios:c0d08596117206942684fc","web":"1:296423355061:web:dee1b1451424a5322684fc"}}}}}}

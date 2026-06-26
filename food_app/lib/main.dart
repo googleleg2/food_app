@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Fish Restaurant',
+      title: 'Hair_Do?',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange),
       home: const RestaurantScreen(),
     );

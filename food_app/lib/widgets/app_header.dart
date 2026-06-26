@@ -13,12 +13,13 @@ class AppHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Row(
         children: [
-          const FlutterLogo(size: 40),
+          // const FlutterLogo(size: 40),
+          Image.asset("assets/logo.png"),
 
           const SizedBox(width: 16),
 
           const Text(
-            "Fish Restaurant",
+            "_Nomaswazi_",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
 
@@ -28,7 +29,7 @@ class AppHeader extends StatelessWidget {
             width: 350,
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Search meals",
+                hintText: "Search Hairstyles",
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -42,7 +43,7 @@ class AppHeader extends StatelessWidget {
           FilledButton.icon(
             onPressed: () {},
             icon: const Icon(Icons.location_on),
-            label: const Text("Delivery"),
+            label: const Text("_Home_"),
           ),
           const SizedBox(width: 12),
 

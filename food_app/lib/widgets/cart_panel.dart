@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../controllers/cart_controller.dart';
@@ -34,10 +36,7 @@ class CartPanel extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    'Add some delicious items',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  Text('Make A Booking', style: TextStyle(color: Colors.grey)),
                 ],
               ),
             ),
@@ -202,9 +201,108 @@ class CartPanel extends StatelessWidget {
                 height: 55,
 
                 child: FilledButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Checkout coming soon')),
+                  onPressed: () async {
+                    final DateTime checkoutTime = DateTime.now();
+
+                    // Select booking date
+                    final DateTime? bookingDate = await showDatePicker(
+                      context: context,
+                      initialDate: checkoutTime,
+                      firstDate: checkoutTime,
+                      lastDate: DateTime(2030),
+                    );
+
+                    if (bookingDate == null) return;
+
+                    // Select booking time
+                    final TimeOfDay? bookingTime = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.now(),
+                    );
+
+                    if (bookingTime == null) return;
+
+                    final ticketNumber =
+                        "BK${Random().nextInt(900000) + 100000}";
+
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text("Booking Ticket"),
+
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ticket #: $ticketNumber",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              Text(
+                                "Checkout Time:\n"
+                                "${checkoutTime.day}/${checkoutTime.month}/${checkoutTime.year}"
+                                "   ${checkoutTime.hour.toString().padLeft(2, '0')}:${checkoutTime.minute.toString().padLeft(2, '0')}",
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              Text(
+                                "Booking Date:\n"
+                                "${bookingDate.day}/${bookingDate.month}/${bookingDate.year}",
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              Text(
+                                "Booking Time:\n"
+                                "${bookingTime.format(context)}",
+                              ),
+
+                              const Divider(),
+
+                              Text(
+                                "Order Total: R ${total.toStringAsFixed(2)}",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Close"),
+                            ),
+
+                            FilledButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      "Booking successfully created.",
+                                    ),
+                                  ),
+                                );
+
+                                // Optional:
+                                // cartController.clearCart();
+                              },
+                              child: const Text("Confirm Booking"),
+                            ),
+                          ],
+                        );
+                      },
                     );
                   },
 

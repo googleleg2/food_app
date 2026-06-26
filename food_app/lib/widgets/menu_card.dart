@@ -16,6 +16,7 @@ class MenuCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
+            
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(12),
@@ -23,7 +24,7 @@ class MenuCard extends StatelessWidget {
               child: Image.asset(
                 item.image,
                 width: double.infinity,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),

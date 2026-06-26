@@ -8,13 +8,13 @@ class StickyCategoryBar extends StatelessWidget {
   const StickyCategoryBar({super.key, required this.controller});
 
   static const categories = [
-    'Specials',
-    'Fish',
-    'Calamari',
-    'Chips & Sides',
-    'Burgers',
-    'Drinks',
-    'Sauces',
+    'Sweet & Sour',
+    'Braids',
+    'Straight Back',
+    'Straight Up',
+    'Wig Installations',
+    'Braids',
+    'Straight Up',
   ];
 
   @override

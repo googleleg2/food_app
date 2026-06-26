@@ -16,7 +16,7 @@ class PromoBanner extends StatelessWidget {
       ),
       child: const Center(
         child: Text(
-          "Fresh Fish Specials",
+          "Yama Swazi Hair Do",
           style: TextStyle(
             color: Colors.white,
             fontSize: 42,

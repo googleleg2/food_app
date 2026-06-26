@@ -72,49 +72,49 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   child: Column(
                     children: [
                       MenuSection(
-                        title: 'Specials',
+                        title: 'Braids',
                         sectionKey: controller.specialsKey,
                         items: specialsItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Fish',
+                        title: 'Straight Back',
                         sectionKey: controller.fishKey,
                         items: fishItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Calamari',
+                        title: 'Straight Up',
                         sectionKey: controller.calamariKey,
                         items: calamariItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Chips & Sides',
+                        title: 'Sweet And Sour',
                         sectionKey: controller.chipsKey,
                         items: sideItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Burgers',
+                        title: 'Wig Installations',
                         sectionKey: controller.burgersKey,
                         items: burgerItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Drinks',
+                        title: 'Braids 2',
                         sectionKey: controller.drinksKey,
                         items: drinkItems,
                         cartController: cartController,
                       ),
 
                       MenuSection(
-                        title: 'Sauces',
+                        title: 'Straight Up 2',
                         sectionKey: controller.saucesKey,
                         items: sauceItems,
                         cartController: cartController,

@@ -21,11 +21,20 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -44,37 +53,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDoF36FCvgYISxtPC6OgXn4TSfV0yK03XY',
-    appId: '1:296423355061:web:dee1b1451424a5322684fc',
-    messagingSenderId: '296423355061',
-    projectId: 'weed-lovers-chess-kitchen',
-    authDomain: 'weed-lovers-chess-kitchen.firebaseapp.com',
-    storageBucket: 'weed-lovers-chess-kitchen.firebasestorage.app',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAhvVJKyOYTVbZBm-0zmOIrYCFPMQhP9fU',
-    appId: '1:296423355061:android:387acf88e16763492684fc',
-    messagingSenderId: '296423355061',
-    projectId: 'weed-lovers-chess-kitchen',
-    storageBucket: 'weed-lovers-chess-kitchen.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAKNfWOBVoQhyQrutQdWlNpHJBfl9-1WSY',
-    appId: '1:296423355061:ios:c0d08596117206942684fc',
-    messagingSenderId: '296423355061',
-    projectId: 'weed-lovers-chess-kitchen',
-    storageBucket: 'weed-lovers-chess-kitchen.firebasestorage.app',
-    iosBundleId: 'com.example.foodApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAKNfWOBVoQhyQrutQdWlNpHJBfl9-1WSY',
-    appId: '1:296423355061:ios:c0d08596117206942684fc',
-    messagingSenderId: '296423355061',
-    projectId: 'weed-lovers-chess-kitchen',
-    storageBucket: 'weed-lovers-chess-kitchen.firebasestorage.app',
-    iosBundleId: 'com.example.foodApp',
+    apiKey: 'AIzaSyCcHPCgWT_RPAo1oUwWyZqrPq2n_ij052U',
+    appId: '1:789421447872:web:0c81b7dd68a4a847d52b25',
+    messagingSenderId: '789421447872',
+    projectId: 'food-app-a7d77',
+    authDomain: 'food-app-a7d77.firebaseapp.com',
+    storageBucket: 'food-app-a7d77.firebasestorage.app',
   );
 }

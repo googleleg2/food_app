@@ -6,22 +6,14 @@ class PromoBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 200, // Banner height
       margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [Colors.orange, Colors.deepOrange],
-        ),
-      ),
-      child: const Center(
-        child: Text(
-          "Yama Swazi Hair Do",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 42,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Image.asset(
+          'assets/banner.png',
+          width: double.infinity,
+          fit: BoxFit.fill, // Fills the banner
         ),
       ),
     );

@@ -1,13 +1,22 @@
+import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:food_app/utils/pdf_ticket.dart';
 
 import '../controllers/cart_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:printing/printing.dart';
+// import '../utils/pdf_ticket.dart;
 
 class CartPanel extends StatelessWidget {
   final CartController cartController;
 
-  const CartPanel({super.key, required this.cartController});
+  CartPanel({super.key, required this.cartController});
+
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -284,16 +293,87 @@ class CartPanel extends StatelessWidget {
                             ),
 
                             FilledButton(
-                              onPressed: () {
-                                Navigator.pop(context);
+                              onPressed: () async {
+                                try {
+                                  await firestore.collection("bookings").add({
+                                    "ticketNumber": ticketNumber,
 
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      "Booking successfully created.",
+                                    "bookingDate":
+                                        "${bookingDate.day}/${bookingDate.month}/${bookingDate.year}",
+
+                                    "bookingTime": bookingTime.format(context),
+
+                                    "checkoutTime": Timestamp.now(),
+
+                                    "subtotal": subtotal,
+
+                                    "deliveryFee": deliveryFee,
+
+                                    "total": total,
+
+                                    "status": "Pending",
+
+                                    "items": cartController.items.map((item) {
+                                      return {
+                                        "name": item.item.name,
+                                        "price": item.item.price,
+                                        "quantity": item.quantity,
+                                        "total": item.total,
+                                      };
+                                    }).toList(),
+                                  });
+
+                                  Navigator.pop(context);
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        "Booking saved successfully.",
+                                      ),
                                     ),
-                                  ),
+                                  );
+
+                                  cartController.clearCart();
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text("Error: $e")),
+                                  );
+                                }
+                                final file = await generateBookingPdf(
+                                  ticketNumber: ticketNumber,
+                                  bookingDate:
+                                      "${bookingDate.day}/${bookingDate.month}/${bookingDate.year}",
+                                  bookingTime: bookingTime.format(context),
+                                  total: total,
+                                  items: cartController.items.map((item) {
+                                    return {
+                                      "name": item.item.name,
+                                      "quantity": item.quantity,
+                                      "total": item.total,
+                                    };
+                                  }).toList(),
                                 );
+                                Future<void> exportPdfForAllPlatforms({
+                                  required Uint8List pdfBytes,
+
+                                  required String filename,
+                                }) async {
+                                  if (Platform.isAndroid || Platform.isIOS) {
+                                    // 📱 Mobile → Share sheet
+                                    await Printing.sharePdf(
+                                      bytes: pdfBytes,
+                                      filename: filename,
+                                    );
+                                  } else {
+                                    // 💻 PC (Windows/Mac/Linux) → Save dialog
+                                    await Printing.layoutPdf(
+                                      onLayout: (_) async => pdfBytes,
+                                      name: filename,
+                                    );
+                                  }
+                                }
+
+                                Navigator.pop(context);
 
                                 // Optional:
                                 // cartController.clearCart();

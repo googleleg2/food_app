@@ -43,96 +43,129 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    final desktop = width > 1100;
+    final isMobile = width < 700;
+    final isTablet = width >= 700 && width < 1100;
+    final isDesktop = width >= 1100;
 
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
 
-      body: Row(
-        children: [
-          Expanded(
-            child: CustomScrollView(
-              controller: controller.scrollController,
-
-              slivers: [
-                SliverToBoxAdapter(
-                  child: AppHeader(cartController: cartController),
-                ),
-
-                const SliverToBoxAdapter(child: PromoBanner()),
-
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: CategoryHeaderDelegate(
-                    StickyCategoryBar(controller: controller),
+      body: SafeArea(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: isDesktop ? 3 : 1,
+              child: CustomScrollView(
+                controller: controller.scrollController,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: AppHeader(cartController: cartController),
                   ),
-                ),
 
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      MenuSection(
-                        title: 'Braids',
-                        sectionKey: controller.specialsKey,
-                        items: specialsItems,
-                        cartController: cartController,
-                      ),
+                  const SliverToBoxAdapter(child: PromoBanner()),
 
-                      MenuSection(
-                        title: 'Straight Back',
-                        sectionKey: controller.fishKey,
-                        items: fishItems,
-                        cartController: cartController,
-                      ),
-
-                      MenuSection(
-                        title: 'Straight Up',
-                        sectionKey: controller.calamariKey,
-                        items: calamariItems,
-                        cartController: cartController,
-                      ),
-
-                      MenuSection(
-                        title: 'Sweet And Sour',
-                        sectionKey: controller.chipsKey,
-                        items: sideItems,
-                        cartController: cartController,
-                      ),
-
-                      MenuSection(
-                        title: 'Wig Installations',
-                        sectionKey: controller.burgersKey,
-                        items: burgerItems,
-                        cartController: cartController,
-                      ),
-
-                      MenuSection(
-                        title: 'Braids 2',
-                        sectionKey: controller.drinksKey,
-                        items: drinkItems,
-                        cartController: cartController,
-                      ),
-
-                      MenuSection(
-                        title: 'Straight Up 2',
-                        sectionKey: controller.saucesKey,
-                        items: sauceItems,
-                        cartController: cartController,
-                      ),
-                    ],
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: CategoryHeaderDelegate(
+                      StickyCategoryBar(controller: controller),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
 
-          if (desktop)
-            SizedBox(
-              width: 380,
-              child: CartPanel(cartController: cartController),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isDesktop
+                            ? 32
+                            : isTablet
+                            ? 24
+                            : 12,
+                        vertical: 16,
+                      ),
+                      child: Column(
+                        children: [
+                          MenuSection(
+                            title: 'Braids',
+                            sectionKey: controller.specialsKey,
+                            items: specialsItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Straight Back',
+                            sectionKey: controller.fishKey,
+                            items: fishItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Straight Up',
+                            sectionKey: controller.calamariKey,
+                            items: calamariItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Sweet And Sour',
+                            sectionKey: controller.chipsKey,
+                            items: sideItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Wig Installations',
+                            sectionKey: controller.burgersKey,
+                            items: burgerItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Braids 2',
+                            sectionKey: controller.drinksKey,
+                            items: drinkItems,
+                            cartController: cartController,
+                          ),
+
+                          MenuSection(
+                            title: 'Straight Up 2',
+                            sectionKey: controller.saucesKey,
+                            items: sauceItems,
+                            cartController: cartController,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-        ],
+
+            if (isDesktop)
+              SizedBox(
+                width: 400,
+                child: CartPanel(cartController: cartController),
+              ),
+          ],
+        ),
       ),
+
+      floatingActionButton: isDesktop
+          ? null
+          : FloatingActionButton.extended(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  useSafeArea: true,
+                  builder: (_) => SizedBox(
+                    height: MediaQuery.of(context).size.height * .9,
+                    child: CartPanel(cartController: cartController),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.shopping_cart),
+              label: const Text("Cart"),
+            ),
     );
   }
 }

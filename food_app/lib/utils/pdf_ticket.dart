@@ -1,9 +1,10 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 
-Future<File> generateBookingPdf({
+Future<Uint8List> generateBookingPdf({
   required String ticketNumber,
   required String bookingDate,
   required String bookingTime,
@@ -54,10 +55,5 @@ Future<File> generateBookingPdf({
     ),
   );
 
-  final output = await getTemporaryDirectory();
-  final file = File("${output.path}/booking_$ticketNumber.pdf");
-
-  await file.writeAsBytes(await pdf.save());
-
-  return file;
+  return await pdf.save();
 }

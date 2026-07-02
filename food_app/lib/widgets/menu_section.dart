@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../controllers/cart_controller.dart';
 import '../models/menu_item.dart';
 import 'menu_card.dart';
-import '../controllers/cart_controller.dart';
 
 class MenuSection extends StatelessWidget {
   final String title;
@@ -33,20 +33,47 @@ class MenuSection extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: items.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              childAspectRatio: 0.85,
-            ),
-            itemBuilder: (context, index) {
-              return MenuCard(
-                item: items[index],
-                cartController: cartController,
+          LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount;
+
+              final width = constraints.maxWidth;
+
+              if (width < 600) {
+                // Phones
+                crossAxisCount = 1;
+              } else if (width < 900) {
+                // Small tablets / landscape phones
+                crossAxisCount = 2;
+              } else if (width < 1300) {
+                // Tablets / laptops
+                crossAxisCount = 3;
+              } else if (width < 1700) {
+                // Desktop
+                crossAxisCount = 4;
+              } else {
+                // Ultra-wide monitors
+                crossAxisCount = 5;
+              }
+
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: items.length,
+
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 0.72,
+                ),
+
+                itemBuilder: (context, index) {
+                  return MenuCard(
+                    item: items[index],
+                    cartController: cartController,
+                  );
+                },
               );
             },
           ),

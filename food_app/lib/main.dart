@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'screens/restaurant_screen.dart';
-
 import 'package:firebase_core/firebase_core.dart';
+
 import 'firebase_options.dart';
+import 'screens/restaurant_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -18,7 +20,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hair_Do?',
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.orange,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+
+      // Good for deep linking later
       home: const RestaurantScreen(),
     );
   }
